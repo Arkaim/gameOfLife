@@ -1,0 +1,36 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+
+  <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
+  <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+  <script language="javascript" type="text/javascript" src="game_of_life.js"></script>
+  <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
+
+  <!-- This line removes any default padding and style. 
+       You might only need one of these values set. -->
+  <style>
+   body {
+   	padding: 0;
+   	 margin: 0;
+   }
+
+   #state-btn {
+   	background-color: rgba(135,255,98, 0.1);
+   	position: absolute;
+   	font-size: 50px;
+   	z-index: 1000;
+   } 
+
+   #state-btn:hover {
+   	transition: .5s;
+   	background-color: rgba(135,255,98, 1);
+   }
+
+	</style>
+</head>
+
+<body>
+	<button id="state-btn" style="" onclick="changeRunningState()"> RUN!</button>
+</body>
+</html>

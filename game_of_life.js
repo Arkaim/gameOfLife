@@ -1,4 +1,3 @@
-
 function make2DArray(cols, rows) {
   let arr = new Array(cols);
   for (let i = 0; i < arr.length; i++) {
@@ -10,7 +9,7 @@ var running = false;
 var grid;
 let cols;
 let rows;
-let resolution = 20;
+let resolution = 30;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -33,7 +32,7 @@ function draw() {
       let x = i * resolution;
       let y = j * resolution;
       if (grid[i][j] == 1) {
-        fill(145,145,255);
+        fill(145, 145, 255);
         stroke(0);
         rect(x, y, resolution - 1, resolution - 1);
       } else {
@@ -44,13 +43,12 @@ function draw() {
     }
   }
 
-   let next = make2DArray(cols, rows);
+  let next = make2DArray(cols, rows);
 
-  if(running) {
+  if (running) {
     for (let i = 0; i < cols; i++) {
       for (let j = 0; j < rows; j++) {
         let state = grid[i][j];
-        // Count live neighbors!
         let sum = 0;
         let neighbors = countNeighbors(grid, i, j);
 
@@ -61,26 +59,37 @@ function draw() {
         } else {
           next[i][j] = state;
         }
-
       }
     }
 
     grid = next;
   }
-  
-
 }
 
 function mousePressed() {
-  for (var i = 0; i < cols; i++) {  
-    for (var j = 0; j < rows; j++) {     
-      if (mouseX >= i * resolution && mouseX <= i * resolution + resolution && mouseY >= j * resolution && mouseY <= j * resolution + resolution ) {
+  for (var i = 0; i < cols; i++) {
+    for (var j = 0; j < rows; j++) {
+      if (
+        mouseX >= i * resolution &&
+        mouseX <= i * resolution + resolution &&
+        mouseY >= j * resolution &&
+        mouseY <= j * resolution + resolution
+      ) {
         if (grid[i][j] == 0) {
-          grid[i][j] = 1; 
+          grid[i][j] = 1;
         } else {
           grid[i][j] = 0;
         }
-      } 
+      }
+    }
+  }
+}
+
+function randomGrid() {
+  grid = make2DArray(cols, rows);
+  for (let i = 0; i < cols; i++) {
+    for (let j = 0; j < rows; j++) {
+      grid[i][j] = floor(random(2));
     }
   }
 }
@@ -100,12 +109,12 @@ function countNeighbors(grid, x, y) {
 
 function changeRunningState() {
   running = !running;
-  if(running) {
-    document.getElementById('state-btn').innerHTML = 'STOP';
-    document.getElementById('state-btn').style.backgroundColor = "red";
-  }else {
-    document.getElementById('state-btn').innerHTML = 'RUN';
+  if (running) {
+    document.getElementById("state-btn").innerHTML = "STOP";
+    document.getElementById("state-btn").style.backgroundColor = "red";
+  } else {
+    document.getElementById("state-btn").innerHTML = "RUN";
   }
-  
+
   return !running;
 }

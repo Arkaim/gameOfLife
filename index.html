@@ -20,6 +20,7 @@
    	position: absolute;
    	font-size: 50px;
    	z-index: 1000;
+    margin: 20px;
    } 
 
    #state-btn:hover {
@@ -27,10 +28,25 @@
    	background-color: rgba(135,255,98, 1);
    }
 
+   #random-btn {
+    background-color: #3855ee;
+    opacity: .5;
+    position: absolute;
+    font-size: 30px;
+    z-index: 1000;
+    margin-top: 20px;
+   }
+
+   #random-btn:hover {
+    transition: .5s;
+    background-color: rgba(135,255,98, 1);
+   }
+
 	</style>
 </head>
 
 <body>
-	<button id="state-btn" style="" onclick="changeRunningState()"> RUN!</button>
+	<button id="state-btn" style="" onclick="changeRunningState();"> RUN!</button>
+  <button id="random-btn" style="position: absolute; margin-left: 300px" onclick="randomGrid();"> GET RANDOM!!!</button>
 </body>
 </html>
